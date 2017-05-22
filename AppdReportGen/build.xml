@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="AppdReportGen" default="build" basedir=".">
+	<property name="version" value="1.0"/>
+	<property name="src.dir" value="src"/>
+	<property name="build.dir" value="${basedir}/bin-ant"/>
+	<property name="lib.dir" value="${basedir}/lib"/>
+	<property name="jar.lib.dir" value="${build.dir}/lib/AppdReportGen_lib"/>
+	<property name="main.class" value="org.appdynamics.birtreport.AppdReportGen"/>
+
+	<!-- Please download BIRT runtime 4.5 or higher separately and point this property to base directory -->
+	<property name="birt.dir" value="/Users/john.aronson/Documents/workspace/birt-runtime-4.6.0"/>
+
+	<!-- Please download AppDRESTAPI-SDK separately, build it and point this property to its base directory -->
+	<property name="AppDRESTAPI-SDK.dir" value="/Users/john.aronson/git/AppDRESTAPI-SDK"/>
+
+	<path id="compile.classpath">
+		<fileset dir="${lib.dir}/">
+			<include name="*.jar"/>
+		</fileset>
+		<fileset dir="${birt.dir}/ReportEngine/lib">
+			<include name="**/*.jar"/>
+		</fileset>
+	</path>
+
+	<target name="init">
+		<mkdir dir="${build.dir}/classes"/>
+		<mkdir dir="${jar.lib.dir}"/>
+	</target>
+
+	<target name="compile" depends="init">
+		<javac srcdir="${src.dir}"
+                destdir="${build.dir}/classes"
+                debug="on"
+                deprecation="on"
+                optimize="off"
+                includes="**"
+        		source="1.7"
+                target="1.7"
+                includeantruntime="false">
+			<classpath refid="compile.classpath"/>
+		</javac>
+	</target>
+
+	<target name="build" depends="compile">
+		<copy todir="${jar.lib.dir}" flatten="true">
+			<path refid="compile.classpath"/>
+			<fileset dir="${AppDRESTAPI-SDK.dir}">
+				<include name="appBuild/AppDRESTAPI-SDK_*.jar"/>
+				<include name="lib/*.jar"/>
+			</fileset>
+		</copy>
+
+		<manifestclasspath property="jar.classpath"
+           jarfile="${build.dir}/${ant.project.name}.jar">
+			<classpath>
+				<fileset dir="${jar.lib.dir}/..">
+					<include name="AppdReportGen_lib/*.jar"/>
+				</fileset>
+			</classpath>
+		</manifestclasspath>
+		
+		<!-- hack to workaround path issue -->
+		<loadresource property="jar.classpath2">
+			<propertyresource name="jar.classpath"/>
+			<filterchain>
+				<tokenfilter>
+					<filetokenizer/>
+					<replacestring from="lib/AppdReportGen_lib/" to="AppdReportGen_lib/"/>
+				</tokenfilter>
+			</filterchain>
+		</loadresource>
+
+		<jar jarfile="${build.dir}/${ant.project.name}.jar">
+			<manifest>
+				<attribute name="Main-Class" value="${main.class}" />
+				<attribute name="Class-Path" value="${jar.classpath2}" />
+			</manifest>
+			<fileset dir="${build.dir}/classes" includes="**"/>
+		</jar>
+	</target>
+
+	<target name="clean">
+		<delete dir="${build.dir}"/>
+	</target>
+
+	<target name="package" depends="build">
+		<zip destfile="${build.dir}/${ant.project.name}_${version}.jar">
+			<fileset dir="${build.dir}/" includes="${ant.project.name}.jar"/>
+			<fileset dir="${build.dir}/lib/" includes="AppdReportGen_lib/**"/>
+			<fileset dir="bin" includes="**"/>
+			<fileset dir="properties" includes="**"/>
+			<fileset dir="report" includes="**"/>
+			<fileset dir="${basedir}/.." includes="LICENSE"/>
+		</zip>
+	</target>
+
+</project>
