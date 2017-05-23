@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="AppdRestDataset" default="build" basedir=".">
+	<property file="version.txt"/>
+	<property name="src.dir" value="src"/>
+	<property name="build.dir" value="${basedir}/bin-ant"/>
+	<property name="lib.dir" value="${basedir}/lib"/>
+	<property name="deploy.dir" value="deploy"/>
+
+	<!-- Please download AppDRESTAPI-SDK separately, build it and point this property to its base directory -->
+	<property name="AppDRESTAPI-SDK.dir" value="/Users/john.aronson/git/AppDRESTAPI-SDK"/>
+
+	<path id="compile.classpath">
+		<fileset dir="${lib.dir}/">
+			<include name="*.jar"/>
+		</fileset>
+		<fileset dir="${AppDRESTAPI-SDK.dir}/appBuild">
+			<include name="AppDRESTAPI-SDK_*.jar"/>
+		</fileset>
+	</path>
+
+	<target name="init">
+		<mkdir dir="${build.dir}/classes"/>
+	</target>
+
+	<target name="compile" depends="init">
+		<javac srcdir="${src.dir}"
+                destdir="${build.dir}/classes"
+                debug="on"
+                deprecation="on"
+                optimize="off"
+                includes="**"
+        		source="1.8"
+                target="1.8"
+                includeantruntime="false">
+			<classpath refid="compile.classpath"/>
+		</javac>
+	</target>
+
+	<target name="build" depends="compile">
+		<mkdir dir="${deploy.dir}"/>
+		<jar jarfile="${deploy.dir}/${ant.project.name}_${version}.jar">
+			<fileset dir="${build.dir}/classes" includes="**"/>
+			<fileset dir="${basedir}" includes="version.txt"/>
+			<fileset dir="${basedir}/.." includes="LICENSE"/>
+		</jar>
+	</target>
+
+	<target name="clean">
+		<delete dir="${build.dir}"/>
+	</target>
+</project>

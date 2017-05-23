@@ -23,7 +23,7 @@ import org.eclipse.birt.report.engine.api.ReportRunner;
  */
 public class AppdReportGen
 {
-	private static final String PARAM_PREFIX = "RunReport.";
+	private static final String PARAM_PREFIX = "AppdReportGen.";
 	private static final int IDX_ARG_DESIGN = 6;
 	private static final int IDX_ARG_PARAMETERS = 5;
 	private static final int IDX_ARG_FORMAT = 3;

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="AppdReportGen" default="build" basedir=".">
-	<property name="version" value="1.0"/>
+	<property file="version.txt"/>
 	<property name="src.dir" value="src"/>
 	<property name="build.dir" value="${basedir}/bin-ant"/>
 	<property name="lib.dir" value="${basedir}/lib"/>
+	<property name="deploy.dir" value="deploy"/>
 	<property name="jar.lib.dir" value="${build.dir}/lib/AppdReportGen_lib"/>
 	<property name="main.class" value="org.appdynamics.birtreport.AppdReportGen"/>
 
@@ -12,6 +13,9 @@
 
 	<!-- Please download AppDRESTAPI-SDK separately, build it and point this property to its base directory -->
 	<property name="AppDRESTAPI-SDK.dir" value="/Users/john.aronson/git/AppDRESTAPI-SDK"/>
+
+	<!-- set this to the correct path to the AppdRestDataset jar file -->
+	<property name="AppdRestDataset.jar" value="${basedir}/../AppdRestDataset/deploy/AppdRestDataset_1-0.jar"/>
 
 	<path id="compile.classpath">
 		<fileset dir="${lib.dir}/">
@@ -49,6 +53,7 @@
 				<include name="lib/*.jar"/>
 			</fileset>
 		</copy>
+		<copy todir="${jar.lib.dir}" file="${AppdRestDataset.jar}"/>
 
 		<manifestclasspath property="jar.classpath"
            jarfile="${build.dir}/${ant.project.name}.jar">
@@ -76,6 +81,7 @@
 				<attribute name="Class-Path" value="${jar.classpath2}" />
 			</manifest>
 			<fileset dir="${build.dir}/classes" includes="**"/>
+			<fileset dir="${basedir}" includes="version.txt"/>
 		</jar>
 	</target>
 
@@ -84,14 +90,15 @@
 	</target>
 
 	<target name="package" depends="build">
-		<zip destfile="${build.dir}/${ant.project.name}_${version}.jar">
+		<delete file="${deploy.dir}/${ant.project.name}_${version}.tar.gz"/>		
+		<tar destfile="${deploy.dir}/${ant.project.name}_${version}.tar.gz" compression="gzip">
 			<fileset dir="${build.dir}/" includes="${ant.project.name}.jar"/>
 			<fileset dir="${build.dir}/lib/" includes="AppdReportGen_lib/**"/>
-			<fileset dir="bin" includes="**"/>
-			<fileset dir="properties" includes="**"/>
-			<fileset dir="report" includes="**"/>
+			<tarfileset dir="bin" filemode="755" includes="*.sh"/>
+			<fileset dir="properties" includes="*.properties"/>
+			<fileset dir="reports" includes="**"/>
 			<fileset dir="${basedir}/.." includes="LICENSE"/>
-		</zip>
+		</tar>
 	</target>
 
 </project>

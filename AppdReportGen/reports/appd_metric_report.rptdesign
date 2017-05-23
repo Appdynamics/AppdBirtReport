@@ -1,0 +1,1562 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201603302314</property>
+    <property name="units">in</property>
+    <method name="initialize"><![CDATA[importPackage(Packages.java.util);
+globalVarMap = new java.util.HashMap();
+]]></method>
+    <property name="iconFile">/templates/grouped_listing.gif</property>
+    <property name="cheatSheet">org.eclipse.birt.report.designer.ui.cheatsheet.groupedlisting</property>
+    <property name="layoutPreference">auto layout</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">72</property>
+    <parameters>
+        <parameter-group name="ControllerParams" id="82">
+            <parameters>
+                <scalar-parameter name="ControllerHost" id="28">
+                    <text-property name="promptText">AppDynamics Controller Host for the REST call</text-property>
+                    <property name="valueType">static</property>
+                    <property name="sortBy">label</property>
+                    <property name="sortDirection">asc</property>
+                    <property name="dataType">string</property>
+                    <property name="distinct">true</property>
+                    <simple-property-list name="defaultValue">
+                        <value type="constant">demo1.appdynamics.com</value>
+                    </simple-property-list>
+                    <list-property name="selectionList">
+                        <structure>
+                            <property name="value">primarycontrollerc-johnatestbp2-kzdyyozq.srv.ravcloud.com</property>
+                        </structure>
+                        <structure>
+                            <property name="value">demo1.appdynamics.com</property>
+                        </structure>
+                    </list-property>
+                    <property name="paramType">simple</property>
+                    <property name="controlType">list-box</property>
+                    <property name="mustMatch">false</property>
+                    <property name="fixedOrder">false</property>
+                    <structure name="format">
+                        <property name="category">Unformatted</property>
+                    </structure>
+                </scalar-parameter>
+                <scalar-parameter name="ControllerPort" id="29">
+                    <text-property name="helpText">AppDynamics Controller port for the REST call</text-property>
+                    <text-property name="promptText">AppDynamics Controller port for the REST call</text-property>
+                    <property name="valueType">static</property>
+                    <property name="sortBy">value</property>
+                    <property name="sortDirection">asc</property>
+                    <property name="dataType">string</property>
+                    <property name="distinct">true</property>
+                    <simple-property-list name="defaultValue">
+                        <value type="constant">80</value>
+                    </simple-property-list>
+                    <list-property name="selectionList">
+                        <structure>
+                            <property name="value">8090</property>
+                        </structure>
+                        <structure>
+                            <property name="value">80</property>
+                        </structure>
+                        <structure>
+                            <property name="value">443</property>
+                        </structure>
+                    </list-property>
+                    <property name="paramType">simple</property>
+                    <property name="controlType">list-box</property>
+                    <property name="mustMatch">false</property>
+                    <property name="fixedOrder">false</property>
+                    <structure name="format">
+                        <property name="category">Unformatted</property>
+                    </structure>
+                </scalar-parameter>
+                <scalar-parameter name="ControllerSsl" id="30">
+                    <text-property name="helpText">Use SSL protocol for the REST call</text-property>
+                    <text-property name="promptText">Use SSL protocol for the REST call</text-property>
+                    <property name="valueType">static</property>
+                    <property name="dataType">boolean</property>
+                    <property name="distinct">true</property>
+                    <simple-property-list name="defaultValue">
+                        <value type="constant">False</value>
+                    </simple-property-list>
+                    <list-property name="selectionList"/>
+                    <property name="paramType">simple</property>
+                    <property name="controlType">check-box</property>
+                    <structure name="format"/>
+                </scalar-parameter>
+                <scalar-parameter name="UserId" id="31">
+                    <text-property name="helpText">AppDynamics User ID for REST call</text-property>
+                    <text-property name="promptText">AppDynamics User ID for REST call</text-property>
+                    <property name="valueType">static</property>
+                    <property name="sortBy">label</property>
+                    <property name="sortDirection">asc</property>
+                    <property name="dataType">string</property>
+                    <property name="distinct">true</property>
+                    <simple-property-list name="defaultValue">
+                        <value type="constant">demouser</value>
+                    </simple-property-list>
+                    <list-property name="selectionList">
+                        <structure>
+                            <property name="value">admin</property>
+                        </structure>
+                        <structure>
+                            <property name="value">demouser</property>
+                        </structure>
+                    </list-property>
+                    <property name="paramType">simple</property>
+                    <property name="controlType">list-box</property>
+                    <property name="mustMatch">false</property>
+                    <property name="fixedOrder">false</property>
+                    <structure name="format">
+                        <property name="category">Unformatted</property>
+                    </structure>
+                </scalar-parameter>
+                <scalar-parameter name="UserPass" id="32">
+                    <text-property name="helpText">AppDynamics user password for REST call</text-property>
+                    <text-property name="promptText">AppDynamics user password for REST call</text-property>
+                    <property name="valueType">static</property>
+                    <property name="dataType">string</property>
+                    <property name="distinct">true</property>
+                    <simple-property-list name="defaultValue">
+                        <value type="constant">Ghed7ped0geN</value>
+                    </simple-property-list>
+                    <list-property name="selectionList"/>
+                    <property name="paramType">simple</property>
+                    <property name="concealValue">true</property>
+                    <property name="controlType">text-box</property>
+                    <structure name="format">
+                        <property name="category">Unformatted</property>
+                    </structure>
+                </scalar-parameter>
+                <scalar-parameter name="UserAcct" id="33">
+                    <text-property name="helpText">AppDynamics user account for REST call</text-property>
+                    <text-property name="promptText">AppDynamics user account for REST call</text-property>
+                    <property name="valueType">static</property>
+                    <property name="dataType">string</property>
+                    <property name="distinct">true</property>
+                    <simple-property-list name="defaultValue">
+                        <value type="constant">customer1</value>
+                    </simple-property-list>
+                    <list-property name="selectionList">
+                        <structure>
+                            <property name="value">customer1</property>
+                        </structure>
+                    </list-property>
+                    <property name="paramType">simple</property>
+                    <property name="controlType">list-box</property>
+                    <property name="mustMatch">false</property>
+                    <property name="fixedOrder">true</property>
+                    <structure name="format">
+                        <property name="category">Unformatted</property>
+                    </structure>
+                </scalar-parameter>
+            </parameters>
+        </parameter-group>
+        <parameter-group name="QueryParams" id="83">
+            <parameters>
+                <scalar-parameter name="ColHeaders" id="332">
+                    <property name="valueType">static</property>
+                    <property name="dataType">string</property>
+                    <property name="distinct">true</property>
+                    <simple-property-list name="defaultValue">
+                        <value type="constant">Time,Total Calls,Very Slow Calls</value>
+                    </simple-property-list>
+                    <list-property name="selectionList"/>
+                    <property name="paramType">simple</property>
+                    <property name="controlType">text-box</property>
+                    <structure name="format">
+                        <property name="category">Unformatted</property>
+                    </structure>
+                </scalar-parameter>
+                <scalar-parameter name="Path1" id="58">
+                    <property name="valueType">static</property>
+                    <property name="isRequired">false</property>
+                    <property name="dataType">string</property>
+                    <property name="distinct">true</property>
+                    <simple-property-list name="defaultValue">
+                        <value type="constant">Business Transaction Performance|Business Transactions|ECommerce-Services|Checkout|Calls per Minute[Sum]</value>
+                    </simple-property-list>
+                    <list-property name="selectionList"/>
+                    <property name="paramType">simple</property>
+                    <property name="controlType">text-box</property>
+                    <structure name="format">
+                        <property name="category">Unformatted</property>
+                    </structure>
+                </scalar-parameter>
+                <scalar-parameter name="Path2" id="59">
+                    <property name="valueType">static</property>
+                    <property name="isRequired">false</property>
+                    <property name="dataType">string</property>
+                    <property name="distinct">true</property>
+                    <simple-property-list name="defaultValue">
+                        <value type="constant">Business Transaction Performance|Business Transactions|ECommerce-Services|Checkout|Number of Very Slow Calls</value>
+                    </simple-property-list>
+                    <list-property name="selectionList"/>
+                    <property name="paramType">simple</property>
+                    <property name="controlType">text-box</property>
+                    <structure name="format">
+                        <property name="category">Unformatted</property>
+                    </structure>
+                </scalar-parameter>
+                <scalar-parameter name="Path3" id="345">
+                    <property name="valueType">static</property>
+                    <property name="isRequired">false</property>
+                    <property name="dataType">string</property>
+                    <property name="distinct">true</property>
+                    <list-property name="selectionList"/>
+                    <property name="paramType">simple</property>
+                    <property name="controlType">text-box</property>
+                    <structure name="format">
+                        <property name="category">Unformatted</property>
+                    </structure>
+                </scalar-parameter>
+                <scalar-parameter name="Path4" id="346">
+                    <property name="valueType">static</property>
+                    <property name="isRequired">false</property>
+                    <property name="dataType">string</property>
+                    <property name="distinct">true</property>
+                    <list-property name="selectionList"/>
+                    <property name="paramType">simple</property>
+                    <property name="controlType">text-box</property>
+                    <structure name="format">
+                        <property name="category">Unformatted</property>
+                    </structure>
+                </scalar-parameter>
+                <scalar-parameter name="Path5" id="347">
+                    <property name="valueType">static</property>
+                    <property name="isRequired">false</property>
+                    <property name="dataType">string</property>
+                    <property name="distinct">true</property>
+                    <list-property name="selectionList"/>
+                    <property name="paramType">simple</property>
+                    <property name="controlType">text-box</property>
+                    <structure name="format">
+                        <property name="category">Unformatted</property>
+                    </structure>
+                </scalar-parameter>
+                <scalar-parameter name="Path6" id="348">
+                    <property name="valueType">static</property>
+                    <property name="isRequired">false</property>
+                    <property name="dataType">string</property>
+                    <property name="distinct">true</property>
+                    <list-property name="selectionList"/>
+                    <property name="paramType">simple</property>
+                    <property name="controlType">text-box</property>
+                    <structure name="format">
+                        <property name="category">Unformatted</property>
+                    </structure>
+                </scalar-parameter>
+                <scalar-parameter name="Path7" id="349">
+                    <property name="valueType">static</property>
+                    <property name="isRequired">false</property>
+                    <property name="dataType">string</property>
+                    <property name="distinct">true</property>
+                    <list-property name="selectionList"/>
+                    <property name="paramType">simple</property>
+                    <property name="controlType">text-box</property>
+                    <structure name="format">
+                        <property name="category">Unformatted</property>
+                    </structure>
+                </scalar-parameter>
+                <scalar-parameter name="Path8" id="350">
+                    <property name="valueType">static</property>
+                    <property name="isRequired">false</property>
+                    <property name="dataType">string</property>
+                    <property name="distinct">true</property>
+                    <list-property name="selectionList"/>
+                    <property name="paramType">simple</property>
+                    <property name="controlType">text-box</property>
+                    <structure name="format">
+                        <property name="category">Unformatted</property>
+                    </structure>
+                </scalar-parameter>
+                <scalar-parameter name="Path9" id="351">
+                    <property name="valueType">static</property>
+                    <property name="isRequired">false</property>
+                    <property name="dataType">string</property>
+                    <property name="distinct">true</property>
+                    <list-property name="selectionList"/>
+                    <property name="paramType">simple</property>
+                    <property name="controlType">text-box</property>
+                    <structure name="format">
+                        <property name="category">Unformatted</property>
+                    </structure>
+                </scalar-parameter>
+                <scalar-parameter name="Path10" id="352">
+                    <property name="valueType">static</property>
+                    <property name="isRequired">false</property>
+                    <property name="dataType">string</property>
+                    <property name="distinct">true</property>
+                    <list-property name="selectionList"/>
+                    <property name="paramType">simple</property>
+                    <property name="controlType">text-box</property>
+                    <structure name="format">
+                        <property name="category">Unformatted</property>
+                    </structure>
+                </scalar-parameter>
+            </parameters>
+        </parameter-group>
+        <scalar-parameter name="App" id="56">
+            <text-property name="helpText">Application name to look for the metric paths under</text-property>
+            <text-property name="promptText">Application name to look for the metric paths under</text-property>
+            <property name="valueType">static</property>
+            <property name="isRequired">false</property>
+            <property name="sortBy">label</property>
+            <property name="sortDirection">asc</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">ECommerce</value>
+            </simple-property-list>
+            <list-property name="selectionList">
+                <structure>
+                    <property name="value">ECommerce</property>
+                </structure>
+                <structure>
+                    <property name="value">BDR</property>
+                </structure>
+            </list-property>
+            <property name="paramType">simple</property>
+            <property name="controlType">list-box</property>
+            <property name="mustMatch">false</property>
+            <property name="fixedOrder">false</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="SortFormat" id="79">
+            <text-property name="helpText">Date format used to sort the and group the data</text-property>
+            <text-property name="promptText">Date format used to sort the and group the data</text-property>
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">yyyy-MM-dd</value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="GroupFormat" id="80">
+            <text-property name="helpText">DateFormat for the display of the groups</text-property>
+            <text-property name="promptText">DateFormat for the display of the groups</text-property>
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">MM-dd-yyyy</value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="StartTime" id="84">
+            <text-property name="helpText">Start of the time range to report</text-property>
+            <text-property name="promptText">Start of the time range to report</text-property>
+            <property name="valueType">static</property>
+            <property name="isRequired">false</property>
+            <property name="dataType">dateTime</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="javascript">new Date("2017-04-01")</value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <method name="getDefaultValueList"><![CDATA[new Date()]]></method>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="DaysBack" id="85">
+            <text-property name="helpText">Number days back to report on</text-property>
+            <text-property name="promptText">Number days back to report on</text-property>
+            <property name="valueType">static</property>
+            <property name="isRequired">false</property>
+            <property name="dataType">integer</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">1</value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <method name="getDefaultValueList"><![CDATA[1]]></method>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <script-data-source name="AppD Scripted Data Source" id="39">
+            <method name="open"><![CDATA[importPackage( Packages.org.appdynamics.metricdataset);
+importPackage( Packages.org.appdynamics.appdrestapi.util);
+importPackage(Packages.java.text);
+importPackage(Packages.java.util);
+importPackage(Packages.java.util.logging);
+
+Logger.getAnonymousLogger().info("processing report args");
+
+var headers = params["ColHeaders"].split(",");
+globalVarMap.put("headers", headers);
+Logger.getAnonymousLogger().fine("headers: ");
+for(var i = 0; i < headers.length; i++)
+	Logger.getAnonymousLogger().fine("headers: " +headers[i]);
+
+
+var pathList = new ArrayList();
+for(idx = 1; idx < 11; idx++)
+{
+	if(params["Path" +idx] != null &amp;&amp; params["Path" +idx].value != null)
+		pathList.add(params["Path" +idx]);
+}
+var metricPaths = pathList.toArray();
+
+Logger.getAnonymousLogger().fine("metricPaths: " +Arrays.toString(metricPaths));
+
+var app = params["App"];
+
+var currentTimeMillis  = params["StartTime"].getTime();
+var daysBack = params["DaysBack"];
+	
+var range = TimeRangeHelper.getTimeRange(currentTimeMillis -(daysBack *(1440*60*1000)), currentTimeMillis);
+Logger.getAnonymousLogger().fine("range: " +range);
+globalVarMap.put("range", range);
+
+
+var controllerHost = params["ControllerHost"];
+controllerPort = params["ControllerPort"];
+
+controllerSsl = params["ControllerSsl"];
+
+userId = params["UserId"];
+userPass = params["UserPass"];
+userAcct = params["UserAcct"];
+
+var sortFormat = new SimpleDateFormat(params["SortFormat"]);
+globalVarMap.put("sortFormat", sortFormat);
+
+var groupFormat = new SimpleDateFormat(params["GroupFormat"]);
+globalVarMap.put("groupFormat", groupFormat);
+
+Logger.getAnonymousLogger().info("creating dataset");
+
+var appdData = MetricQuery.queryData(controllerHost, controllerPort, controllerSsl, userId, userPass, userAcct, metricPaths, app, range);
+var dataIterator = appdData.getIterator();
+
+globalVarMap.put("dataIterator", dataIterator);
+Logger.getAnonymousLogger().info("processing data rows");
+]]></method>
+        </script-data-source>
+    </data-sources>
+    <data-sets>
+        <script-data-set name="Metric Data Set" id="40">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">Time</property>
+                    <property name="dataType">date-time</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">Col1</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">Col2</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">Col3</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">Col4</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">Col5</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">Col6</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">Col7</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">Col8</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">Col9</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">11</property>
+                    <property name="name">Col10</property>
+                    <property name="dataType">integer</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">Time</property>
+                    <property name="analysis">dimension</property>
+                </structure>
+                <structure>
+                    <property name="columnName">Col1</property>
+                    <property name="analysis">measure</property>
+                </structure>
+                <structure>
+                    <property name="columnName">Col2</property>
+                    <property name="analysis">measure</property>
+                </structure>
+                <structure>
+                    <property name="columnName">Col3</property>
+                    <property name="analysis">measure</property>
+                </structure>
+                <structure>
+                    <property name="columnName">Col4</property>
+                    <property name="analysis">measure</property>
+                </structure>
+                <structure>
+                    <property name="columnName">Col5</property>
+                    <property name="analysis">measure</property>
+                </structure>
+                <structure>
+                    <property name="columnName">Col6</property>
+                    <property name="analysis">measure</property>
+                </structure>
+                <structure>
+                    <property name="columnName">Col7</property>
+                    <property name="analysis">measure</property>
+                </structure>
+                <structure>
+                    <property name="columnName">Col8</property>
+                    <property name="analysis">measure</property>
+                </structure>
+                <structure>
+                    <property name="columnName">Col9</property>
+                    <property name="analysis">measure</property>
+                </structure>
+                <structure>
+                    <property name="columnName">Col10</property>
+                    <property name="analysis">measure</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">Time</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">Col1</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">Col2</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">Col3</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">Col4</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">Col5</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">Col6</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">Col7</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">Col8</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">Col9</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">Col10</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">AppD Scripted Data Source</property>
+            <method name="open"><![CDATA[recordCount = 0;
+
+importPackage(Packages.java.util.logging);
+
+dataIterator = globalVarMap.get("dataIterator");
+
+//Logger.getAnonymousLogger().info(dataIterator);
+
+if(dataIterator.hasNext())
+{
+	//skip the header row
+	var row = dataIterator.next();
+	// how many columns?
+	//Logger.getAnonymousLogger().info("dataset width: "+ row.length);
+	globalVarMap.put("dsCols", row.length);
+}]]></method>
+            <method name="fetch"><![CDATA[dataIterator = globalVarMap.get("dataIterator");
+
+//Logger.getAnonymousLogger().info(dataIterator);
+
+if(dataIterator.hasNext())
+{
+	var rowData = dataIterator.next();
+	row.Time = rowData[0];
+	switch(rowData.length)
+	{
+	case 10:
+		row.Col10 = rowData[10];
+	case 9:
+		row.Col9 = rowData[9];
+	case 8:
+		row.Col8 = rowData[8];
+	case 7:
+		row.Col7 = rowData[7];
+	case 6:
+		row.Col6 = rowData[6];
+	case 5:
+		row.Col5 = rowData[5];
+	case 4:
+		row.Col4 = rowData[4];
+	case 3:
+		row.Col3 = rowData[3];
+	case 2:
+		row.Col2 = rowData[2];
+	case 1:
+		row.Col1 = rowData[1];
+	}
+	
+	if(Logger.getAnonymousLogger().isLoggable(Level.FINE))
+		Logger.getAnonymousLogger().fine("DataSetRow: " +Arrays.toString(rowData));
+
+	return true;
+}
+
+return false;]]></method>
+            <method name="close"><![CDATA[Logger.getAnonymousLogger().info("processed data rows");
+]]></method>
+        </script-data-set>
+    </data-sets>
+    <styles>
+        <style name="report" id="38">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="orientation">auto</property>
+            <page-footer>
+                <grid id="3">
+                    <property name="width">100%</property>
+                    <column id="4"/>
+                    <row id="5">
+                        <cell id="6">
+                            <text id="7">
+                                <property name="contentType">html</property>
+                                <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                            </text>
+                        </cell>
+                    </row>
+                </grid>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <grid id="8">
+            <property name="height">0.6666666666666666in</property>
+            <property name="width">7.944444444444445in</property>
+            <list-property name="visibility">
+                <structure>
+                    <property name="format">csv</property>
+                    <expression name="valueExpr" type="javascript">true</expression>
+                </structure>
+            </list-property>
+            <column id="9">
+                <property name="width">7.944444444444445in</property>
+            </column>
+            <row id="10">
+                <property name="verticalAlign">text-bottom</property>
+                <property name="height">0.3194444444444444in</property>
+                <cell id="11">
+                    <property name="verticalAlign">top</property>
+                    <label id="106">
+                        <property name="fontSize">16pt</property>
+                        <property name="textAlign">center</property>
+                        <list-property name="visibility">
+                            <structure>
+                                <property name="format">csv</property>
+                                <expression name="valueExpr" type="javascript">true</expression>
+                            </structure>
+                        </list-property>
+                        <text-property name="text">AppDynamics Metric Export</text-property>
+                    </label>
+                </cell>
+            </row>
+            <row id="185">
+                <property name="verticalAlign">text-bottom</property>
+                <property name="height">0.6666666666666666in</property>
+                <cell id="186">
+                    <property name="verticalAlign">top</property>
+                    <text-data id="354">
+                        <list-property name="visibility">
+                            <structure>
+                                <property name="format">csv</property>
+                                <expression name="valueExpr" type="javascript">true</expression>
+                            </structure>
+                        </list-property>
+                        <expression name="valueExpr">"Application: " + params["App"].value</expression>
+                        <property name="contentType">html</property>
+                    </text-data>
+                    <text-data id="355">
+                        <list-property name="visibility">
+                            <structure>
+                                <property name="format">csv</property>
+                                <expression name="valueExpr" type="javascript">true</expression>
+                            </structure>
+                        </list-property>
+                        <expression name="valueExpr">paths = "Paths: " +
+(params["Path1"].value != null ? "\n\t" + params["Path1"].value : "") +
+(params["Path2"].value != null ? "\n\t" + params["Path2"].value : "") +
+(params["Path3"].value != null ? "\n\t" + params["Path3"].value : "") +
+(params["Path4"].value != null ? "\n\t" + params["Path4"].value : "") +
+(params["Path5"].value != null ? "\n\t" + params["Path5"].value : "") +
+(params["Path6"].value != null ? "\n\t" + params["Path6"].value : "") +
+(params["Path7"].value != null ? "\n\t" + params["Path7"].value : "") +
+(params["Path8"].value != null ? "\n\t" + params["Path8"].value : "") +
+(params["Path9"].value != null ? "\n\t" + params["Path9"].value : "") +
+(params["Path10"].value != null ? "\n\t" + params["Path10"].value : "")</expression>
+                        <property name="contentType">html</property>
+                    </text-data>
+                </cell>
+            </row>
+        </grid>
+        <table id="187">
+            <list-property name="userProperties">
+                <structure>
+                    <property name="name">__ac_group_collapse_level</property>
+                    <property name="type">string</property>
+                </structure>
+            </list-property>
+            <property name="dataSet">Metric Data Set</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">Time</property>
+                    <text-property name="displayName">Time</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["Time"]</expression>
+                    <property name="dataType">date-time</property>
+                </structure>
+                <structure>
+                    <property name="name">Col1</property>
+                    <text-property name="displayName">Col1</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["Col1"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">Col2</property>
+                    <text-property name="displayName">Col2</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["Col2"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">Col3</property>
+                    <text-property name="displayName">Col3</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["Col3"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">Col4</property>
+                    <text-property name="displayName">Col4</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["Col4"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">Col5</property>
+                    <text-property name="displayName">Col5</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["Col5"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">Col6</property>
+                    <text-property name="displayName">Col6</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["Col6"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">Col7</property>
+                    <text-property name="displayName">Col7</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["Col7"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">Col8</property>
+                    <text-property name="displayName">Col8</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["Col8"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">Col9</property>
+                    <text-property name="displayName">Col9</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["Col9"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">Col10</property>
+                    <text-property name="displayName">Col10</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["Col10"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">TimeGroup</property>
+                    <text-property name="displayName">TimeGroup</text-property>
+                    <expression name="expression" type="javascript">//dataSetRow["Time"]
+sortFormat = globalVarMap.get("sortFormat");
+sortFormat.format(dataSetRow["Time"]);</expression>
+                    <property name="dataType">date-time</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">Col1_Agg</property>
+                    <property name="dataType">integer</property>
+                    <simple-property-list name="aggregateOn">
+                        <value>TimeGroup</value>
+                    </simple-property-list>
+                    <property name="aggregateFunction">SUM</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value" type="javascript">row["Col1"]</expression>
+                        </structure>
+                    </list-property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">Col10_Agg</property>
+                    <property name="dataType">integer</property>
+                    <simple-property-list name="aggregateOn">
+                        <value>TimeGroup</value>
+                    </simple-property-list>
+                    <property name="aggregateFunction">SUM</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value" type="javascript">row["Col10"]</expression>
+                        </structure>
+                    </list-property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">Col9_Agg</property>
+                    <property name="dataType">integer</property>
+                    <simple-property-list name="aggregateOn">
+                        <value>TimeGroup</value>
+                    </simple-property-list>
+                    <property name="aggregateFunction">SUM</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value" type="javascript">row["Col9"]</expression>
+                        </structure>
+                    </list-property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">Col8_Agg</property>
+                    <property name="dataType">integer</property>
+                    <simple-property-list name="aggregateOn">
+                        <value>TimeGroup</value>
+                    </simple-property-list>
+                    <property name="aggregateFunction">SUM</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value" type="javascript">row["Col8"]</expression>
+                        </structure>
+                    </list-property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">Col7_Agg</property>
+                    <property name="dataType">integer</property>
+                    <simple-property-list name="aggregateOn">
+                        <value>TimeGroup</value>
+                    </simple-property-list>
+                    <property name="aggregateFunction">SUM</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value" type="javascript">row["Col7"]</expression>
+                        </structure>
+                    </list-property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">Col6_Agg</property>
+                    <property name="dataType">integer</property>
+                    <simple-property-list name="aggregateOn">
+                        <value>TimeGroup</value>
+                    </simple-property-list>
+                    <property name="aggregateFunction">SUM</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value" type="javascript">row["Col6"]</expression>
+                        </structure>
+                    </list-property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">Col5_Agg</property>
+                    <property name="dataType">integer</property>
+                    <simple-property-list name="aggregateOn">
+                        <value>TimeGroup</value>
+                    </simple-property-list>
+                    <property name="aggregateFunction">SUM</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value" type="javascript">row["Col5"]</expression>
+                        </structure>
+                    </list-property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">Col4_Agg</property>
+                    <property name="dataType">integer</property>
+                    <simple-property-list name="aggregateOn">
+                        <value>TimeGroup</value>
+                    </simple-property-list>
+                    <property name="aggregateFunction">SUM</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value" type="javascript">row["Col4"]</expression>
+                        </structure>
+                    </list-property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">Col3_Agg</property>
+                    <property name="dataType">integer</property>
+                    <simple-property-list name="aggregateOn">
+                        <value>TimeGroup</value>
+                    </simple-property-list>
+                    <property name="aggregateFunction">SUM</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value" type="javascript">row["Col3"]</expression>
+                        </structure>
+                    </list-property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">Col2_Agg</property>
+                    <property name="dataType">integer</property>
+                    <simple-property-list name="aggregateOn">
+                        <value>TimeGroup</value>
+                    </simple-property-list>
+                    <property name="aggregateFunction">SUM</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value" type="javascript">row["Col2"]</expression>
+                        </structure>
+                    </list-property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">TimeGroupLbl</property>
+                    <text-property name="displayName">TimeGroup</text-property>
+                    <expression name="expression" type="javascript">//dataSetRow["Time"]
+sortFormat = globalVarMap.get("sortFormat");
+sortFormat.format(dataSetRow["Time"]);</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+            </list-property>
+            <column id="246">
+                <list-property name="visibility">
+                    <structure>
+                        <property name="format">all</property>
+                        <expression name="valueExpr" type="javascript">true</expression>
+                    </structure>
+                </list-property>
+            </column>
+            <column id="318">
+                <property name="width">3.388888888888889in</property>
+            </column>
+            <column id="247">
+                <list-property name="visibility">
+                    <structure>
+                        <property name="format">all</property>
+                        <expression name="valueExpr" type="javascript">globalVarMap.get("dsCols") &lt;= 1</expression>
+                    </structure>
+                </list-property>
+                <property name="width">0.9583333333333334in</property>
+            </column>
+            <column id="248">
+                <list-property name="visibility">
+                    <structure>
+                        <property name="format">all</property>
+                        <expression name="valueExpr" type="javascript">globalVarMap.get("dsCols") &lt;= 2</expression>
+                    </structure>
+                </list-property>
+            </column>
+            <column id="249">
+                <list-property name="visibility">
+                    <structure>
+                        <property name="format">all</property>
+                        <expression name="valueExpr" type="javascript">globalVarMap.get("dsCols") &lt;= 3</expression>
+                    </structure>
+                </list-property>
+            </column>
+            <column id="250">
+                <list-property name="visibility">
+                    <structure>
+                        <property name="format">all</property>
+                        <expression name="valueExpr" type="javascript">globalVarMap.get("dsCols") &lt;= 4</expression>
+                    </structure>
+                </list-property>
+            </column>
+            <column id="251">
+                <list-property name="visibility">
+                    <structure>
+                        <property name="format">all</property>
+                        <expression name="valueExpr" type="javascript">globalVarMap.get("dsCols") &lt;= 5</expression>
+                    </structure>
+                </list-property>
+            </column>
+            <column id="252">
+                <list-property name="visibility">
+                    <structure>
+                        <property name="format">all</property>
+                        <expression name="valueExpr" type="javascript">globalVarMap.get("dsCols") &lt;= 6</expression>
+                    </structure>
+                </list-property>
+            </column>
+            <column id="253">
+                <list-property name="visibility">
+                    <structure>
+                        <property name="format">all</property>
+                        <expression name="valueExpr" type="javascript">globalVarMap.get("dsCols") &lt;= 7</expression>
+                    </structure>
+                </list-property>
+            </column>
+            <column id="254">
+                <list-property name="visibility">
+                    <structure>
+                        <property name="format">all</property>
+                        <expression name="valueExpr" type="javascript">globalVarMap.get("dsCols") &lt;= 8</expression>
+                    </structure>
+                </list-property>
+            </column>
+            <column id="255">
+                <list-property name="visibility">
+                    <structure>
+                        <property name="format">all</property>
+                        <expression name="valueExpr" type="javascript">globalVarMap.get("dsCols") &lt; 9</expression>
+                    </structure>
+                </list-property>
+            </column>
+            <column id="256">
+                <list-property name="visibility">
+                    <structure>
+                        <property name="format">all</property>
+                        <expression name="valueExpr" type="javascript">globalVarMap.get("dsCols") &lt;= 10</expression>
+                    </structure>
+                </list-property>
+            </column>
+            <header>
+                <row id="188">
+                    <property name="height">0.6111111111111112in</property>
+                    <cell id="189">
+                        <property name="fontFamily">sans-serif</property>
+                        <label id="190">
+                            <text-property name="text">Time</text-property>
+                        </label>
+                    </cell>
+                    <cell id="313">
+                        <property name="fontFamily">sans-serif</property>
+                        <text-data id="257">
+                            <list-property name="visibility">
+                                <structure>
+                                    <property name="format">docx</property>
+                                    <expression name="valueExpr" type="javascript">true</expression>
+                                </structure>
+                                <structure>
+                                    <property name="format">html</property>
+                                    <expression name="valueExpr" type="javascript">true</expression>
+                                </structure>
+                                <structure>
+                                    <property name="format">pdf</property>
+                                    <expression name="valueExpr" type="javascript">true</expression>
+                                </structure>
+                                <structure>
+                                    <property name="format">postscript</property>
+                                    <expression name="valueExpr" type="javascript">true</expression>
+                                </structure>
+                                <structure>
+                                    <property name="format">ppt</property>
+                                    <expression name="valueExpr" type="javascript">true</expression>
+                                </structure>
+                                <structure>
+                                    <property name="format">pptx</property>
+                                    <expression name="valueExpr" type="javascript">true</expression>
+                                </structure>
+                                <structure>
+                                    <property name="format">xhtml</property>
+                                    <expression name="valueExpr" type="javascript">true</expression>
+                                </structure>
+                                <structure>
+                                    <property name="format">xlsx</property>
+                                    <expression name="valueExpr" type="javascript">true</expression>
+                                </structure>
+                                <structure>
+                                    <property name="format">xls</property>
+                                    <expression name="valueExpr" type="javascript">true</expression>
+                                </structure>
+                                <structure>
+                                    <property name="format">doc</property>
+                                    <expression name="valueExpr" type="javascript">true</expression>
+                                </structure>
+                            </list-property>
+                            <expression name="valueExpr">"# AppDynamics Metric Export"+
+"\n# Application: " + params["App"].value +
+"\n# Paths: " +
+(params["Path1"].value != null ? "\n#\t" + params["Path1"].value : "") +
+(params["Path2"].value != null ? "\n#\t" + params["Path2"].value : "") +
+(params["Path3"].value != null ? "\n#\t" + params["Path3"].value : "") +
+(params["Path4"].value != null ? "\n#\t" + params["Path4"].value : "") +
+(params["Path5"].value != null ? "\n#\t" + params["Path5"].value : "") +
+(params["Path6"].value != null ? "\n#\t" + params["Path6"].value : "") +
+(params["Path7"].value != null ? "\n#\t" + params["Path7"].value : "") +
+(params["Path8"].value != null ? "\n#\t" + params["Path8"].value : "") +
+(params["Path9"].value != null ? "\n#\t" + params["Path9"].value : "") +
+(params["Path10"].value != null ? "\n#\t" + params["Path10"].value : "") +
+"\n# " + globalVarMap.get("range").toString().replace("\n", " ").replace("\t", " ") +
+"\n# Generated: " +new Date() +
+"\n#"</expression>
+                            <property name="contentType">plain</property>
+                        </text-data>
+                        <text-data id="344">
+                            <expression name="valueExpr">colIdx = 0;
+headers = globalVarMap.get("headers"); 
+if(headers.length > colIdx) headers[colIdx]; else "Col"+colIdx;</expression>
+                            <property name="contentType">plain</property>
+                        </text-data>
+                    </cell>
+                    <cell id="191">
+                        <property name="fontFamily">sans-serif</property>
+                        <text-data id="334">
+                            <expression name="valueExpr">colIdx = 1;
+headers = globalVarMap.get("headers"); 
+if(headers.length > colIdx) headers[colIdx]; else "Col"+colIdx;</expression>
+                            <property name="contentType">plain</property>
+                        </text-data>
+                    </cell>
+                    <cell id="193">
+                        <property name="fontFamily">sans-serif</property>
+                        <text-data id="335">
+                            <expression name="valueExpr">colIdx = 2;
+headers = globalVarMap.get("headers"); 
+if(headers.length > colIdx) headers[colIdx]; else "Col"+colIdx;</expression>
+                            <property name="contentType">plain</property>
+                        </text-data>
+                    </cell>
+                    <cell id="195">
+                        <property name="fontFamily">sans-serif</property>
+                        <text-data id="336">
+                            <expression name="valueExpr">colIdx = 3;
+headers = globalVarMap.get("headers"); 
+if(headers.length > colIdx) headers[colIdx]; else "Col"+colIdx;</expression>
+                            <property name="contentType">plain</property>
+                        </text-data>
+                    </cell>
+                    <cell id="197">
+                        <property name="fontFamily">sans-serif</property>
+                        <text-data id="337">
+                            <expression name="valueExpr">colIdx = 4;
+headers = globalVarMap.get("headers"); 
+if(headers.length > colIdx) headers[colIdx]; else "Col"+colIdx;</expression>
+                            <property name="contentType">plain</property>
+                        </text-data>
+                    </cell>
+                    <cell id="199">
+                        <property name="fontFamily">sans-serif</property>
+                        <text-data id="338">
+                            <expression name="valueExpr">colIdx = 5;
+headers = globalVarMap.get("headers"); 
+if(headers.length > colIdx) headers[colIdx]; else "Col"+colIdx;</expression>
+                            <property name="contentType">plain</property>
+                        </text-data>
+                    </cell>
+                    <cell id="201">
+                        <property name="fontFamily">sans-serif</property>
+                        <text-data id="339">
+                            <expression name="valueExpr">colIdx = 6;
+headers = globalVarMap.get("headers"); 
+if(headers.length > colIdx) headers[colIdx]; else "Col"+colIdx;</expression>
+                            <property name="contentType">plain</property>
+                        </text-data>
+                    </cell>
+                    <cell id="203">
+                        <property name="fontFamily">sans-serif</property>
+                        <text-data id="340">
+                            <expression name="valueExpr">colIdx = 7;
+headers = globalVarMap.get("headers"); 
+if(headers.length > colIdx) headers[colIdx]; else "Col"+colIdx;</expression>
+                            <property name="contentType">plain</property>
+                        </text-data>
+                    </cell>
+                    <cell id="205">
+                        <property name="fontFamily">sans-serif</property>
+                        <text-data id="341">
+                            <expression name="valueExpr">colIdx = 8;
+headers = globalVarMap.get("headers"); 
+if(headers.length > colIdx) headers[colIdx]; else "Col"+colIdx;</expression>
+                            <property name="contentType">plain</property>
+                        </text-data>
+                    </cell>
+                    <cell id="207">
+                        <property name="fontFamily">sans-serif</property>
+                        <text-data id="342">
+                            <expression name="valueExpr">colIdx = 9;
+headers = globalVarMap.get("headers"); 
+if(headers.length > colIdx) headers[colIdx]; else "Col"+colIdx;</expression>
+                            <property name="contentType">plain</property>
+                        </text-data>
+                    </cell>
+                    <cell id="209">
+                        <property name="fontFamily">sans-serif</property>
+                        <text-data id="343">
+                            <expression name="valueExpr">colIdx = 10;
+headers = globalVarMap.get("headers"); 
+if(headers.length > colIdx) headers[colIdx]; else "Col"+colIdx;</expression>
+                            <property name="contentType">plain</property>
+                        </text-data>
+                    </cell>
+                </row>
+            </header>
+            <group id="287">
+                <property name="groupName">TimeGroup</property>
+                <expression name="keyExpr" type="javascript">//row["Time"]
+sortFormat = globalVarMap.get("sortFormat");
+sortFormat.format(dataSetRow["Time"]);</expression>
+                <property name="hideDetail">false</property>
+                <property name="pageBreakAfter">avoid</property>
+                <property name="pageBreakBefore">avoid</property>
+                <header>
+                    <row id="288">
+                        <property name="pageBreakAfter">avoid</property>
+                        <property name="pageBreakBefore">avoid</property>
+                        <list-property name="visibility">
+                            <structure>
+                                <property name="format">all</property>
+                                <expression name="valueExpr" type="javascript">true</expression>
+                            </structure>
+                        </list-property>
+                        <cell id="289">
+                            <property name="fontFamily">sans-serif</property>
+                        </cell>
+                        <cell id="314">
+                            <property name="fontFamily">sans-serif</property>
+                        </cell>
+                        <cell id="290">
+                            <property name="fontFamily">sans-serif</property>
+                        </cell>
+                        <cell id="291">
+                            <property name="fontFamily">sans-serif</property>
+                        </cell>
+                        <cell id="292">
+                            <property name="fontFamily">sans-serif</property>
+                        </cell>
+                        <cell id="293">
+                            <property name="fontFamily">sans-serif</property>
+                        </cell>
+                        <cell id="294">
+                            <property name="fontFamily">sans-serif</property>
+                        </cell>
+                        <cell id="295">
+                            <property name="fontFamily">sans-serif</property>
+                        </cell>
+                        <cell id="296">
+                            <property name="fontFamily">sans-serif</property>
+                        </cell>
+                        <cell id="297">
+                            <property name="fontFamily">sans-serif</property>
+                        </cell>
+                        <cell id="298">
+                            <property name="fontFamily">sans-serif</property>
+                        </cell>
+                        <cell id="299">
+                            <property name="fontFamily">sans-serif</property>
+                        </cell>
+                    </row>
+                </header>
+                <footer>
+                    <row id="300">
+                        <property name="pageBreakAfter">avoid</property>
+                        <property name="pageBreakBefore">avoid</property>
+                        <cell id="301">
+                            <property name="fontFamily">sans-serif</property>
+                        </cell>
+                        <cell id="316">
+                            <property name="fontFamily">sans-serif</property>
+                            <data id="312">
+                                <structure name="dateTimeFormat">
+                                    <property name="category">Unformatted</property>
+                                </structure>
+                                <property name="resultSetColumn">TimeGroupLbl</property>
+                            </data>
+                        </cell>
+                        <cell id="302">
+                            <property name="fontFamily">sans-serif</property>
+                            <data id="322">
+                                <property name="resultSetColumn">Col1_Agg</property>
+                            </data>
+                        </cell>
+                        <cell id="303">
+                            <property name="fontFamily">sans-serif</property>
+                            <data id="323">
+                                <property name="resultSetColumn">Col2_Agg</property>
+                            </data>
+                        </cell>
+                        <cell id="304">
+                            <property name="fontFamily">sans-serif</property>
+                            <data id="324">
+                                <property name="resultSetColumn">Col3_Agg</property>
+                            </data>
+                        </cell>
+                        <cell id="305">
+                            <property name="fontFamily">sans-serif</property>
+                            <data id="325">
+                                <property name="resultSetColumn">Col4_Agg</property>
+                            </data>
+                        </cell>
+                        <cell id="306">
+                            <property name="fontFamily">sans-serif</property>
+                            <data id="326">
+                                <property name="resultSetColumn">Col5_Agg</property>
+                            </data>
+                        </cell>
+                        <cell id="307">
+                            <property name="fontFamily">sans-serif</property>
+                            <data id="327">
+                                <property name="resultSetColumn">Col6_Agg</property>
+                            </data>
+                        </cell>
+                        <cell id="308">
+                            <property name="fontFamily">sans-serif</property>
+                            <data id="328">
+                                <property name="resultSetColumn">Col7_Agg</property>
+                            </data>
+                        </cell>
+                        <cell id="309">
+                            <property name="fontFamily">sans-serif</property>
+                            <data id="329">
+                                <property name="resultSetColumn">Col8_Agg</property>
+                            </data>
+                        </cell>
+                        <cell id="310">
+                            <property name="fontFamily">sans-serif</property>
+                            <data id="330">
+                                <property name="resultSetColumn">Col9_Agg</property>
+                            </data>
+                        </cell>
+                        <cell id="311">
+                            <property name="fontFamily">sans-serif</property>
+                            <data id="331">
+                                <property name="resultSetColumn">Col10_Agg</property>
+                            </data>
+                        </cell>
+                    </row>
+                </footer>
+            </group>
+            <detail>
+                <row id="211">
+                    <property name="pageBreakAfter">avoid</property>
+                    <property name="pageBreakBefore">avoid</property>
+                    <list-property name="visibility">
+                        <structure>
+                            <property name="format">all</property>
+                            <expression name="valueExpr" type="javascript">true</expression>
+                        </structure>
+                    </list-property>
+                    <cell id="212">
+                        <property name="fontFamily">sans-serif</property>
+                        <data id="213">
+                            <property name="resultSetColumn">Time</property>
+                        </data>
+                    </cell>
+                    <cell id="315">
+                        <property name="fontFamily">sans-serif</property>
+                        <data id="320">
+                            <structure name="dateTimeFormat">
+                                <property name="category">Unformatted</property>
+                            </structure>
+                            <property name="resultSetColumn">TimeGroup</property>
+                        </data>
+                    </cell>
+                    <cell id="214">
+                        <property name="fontFamily">sans-serif</property>
+                        <data id="215">
+                            <property name="resultSetColumn">Col1</property>
+                        </data>
+                    </cell>
+                    <cell id="216">
+                        <property name="fontFamily">sans-serif</property>
+                        <data id="217">
+                            <property name="resultSetColumn">Col2</property>
+                        </data>
+                    </cell>
+                    <cell id="218">
+                        <property name="fontFamily">sans-serif</property>
+                        <data id="219">
+                            <property name="resultSetColumn">Col3</property>
+                        </data>
+                    </cell>
+                    <cell id="220">
+                        <property name="fontFamily">sans-serif</property>
+                        <data id="221">
+                            <property name="resultSetColumn">Col4</property>
+                        </data>
+                    </cell>
+                    <cell id="222">
+                        <property name="fontFamily">sans-serif</property>
+                        <data id="223">
+                            <property name="resultSetColumn">Col5</property>
+                        </data>
+                    </cell>
+                    <cell id="224">
+                        <property name="fontFamily">sans-serif</property>
+                        <data id="225">
+                            <property name="resultSetColumn">Col6</property>
+                        </data>
+                    </cell>
+                    <cell id="226">
+                        <property name="fontFamily">sans-serif</property>
+                        <data id="227">
+                            <property name="resultSetColumn">Col7</property>
+                        </data>
+                    </cell>
+                    <cell id="228">
+                        <property name="fontFamily">sans-serif</property>
+                        <data id="229">
+                            <property name="resultSetColumn">Col8</property>
+                        </data>
+                    </cell>
+                    <cell id="230">
+                        <property name="fontFamily">sans-serif</property>
+                        <data id="231">
+                            <property name="resultSetColumn">Col9</property>
+                        </data>
+                    </cell>
+                    <cell id="232">
+                        <property name="fontFamily">sans-serif</property>
+                        <data id="233">
+                            <property name="resultSetColumn">Col10</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="234">
+                    <list-property name="visibility">
+                        <structure>
+                            <property name="format">all</property>
+                            <expression name="valueExpr" type="javascript">true</expression>
+                        </structure>
+                    </list-property>
+                    <cell id="235">
+                        <property name="fontFamily">sans-serif</property>
+                    </cell>
+                    <cell id="317">
+                        <property name="fontFamily">sans-serif</property>
+                    </cell>
+                    <cell id="236">
+                        <property name="fontFamily">sans-serif</property>
+                    </cell>
+                    <cell id="237">
+                        <property name="fontFamily">sans-serif</property>
+                    </cell>
+                    <cell id="238">
+                        <property name="fontFamily">sans-serif</property>
+                    </cell>
+                    <cell id="239">
+                        <property name="fontFamily">sans-serif</property>
+                    </cell>
+                    <cell id="240">
+                        <property name="fontFamily">sans-serif</property>
+                    </cell>
+                    <cell id="241">
+                        <property name="fontFamily">sans-serif</property>
+                    </cell>
+                    <cell id="242">
+                        <property name="fontFamily">sans-serif</property>
+                    </cell>
+                    <cell id="243">
+                        <property name="fontFamily">sans-serif</property>
+                    </cell>
+                    <cell id="244">
+                        <property name="fontFamily">sans-serif</property>
+                    </cell>
+                    <cell id="245">
+                        <property name="fontFamily">sans-serif</property>
+                    </cell>
+                </row>
+            </footer>
+        </table>
+        <text-data id="353">
+            <list-property name="visibility">
+                <structure>
+                    <property name="format">csv</property>
+                    <expression name="valueExpr" type="javascript">true</expression>
+                </structure>
+            </list-property>
+            <expression name="valueExpr">(globalVarMap.get("range") != null ? globalVarMap.get("range").toString().replace("\n", " ").replace("\t", " ") : "" );</expression>
+            <property name="contentType">plain</property>
+        </text-data>
+    </body>
+</report>

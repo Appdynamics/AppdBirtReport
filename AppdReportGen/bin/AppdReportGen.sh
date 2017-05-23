@@ -1,5 +1,13 @@
 #!/bin/bash
-JAVA_HOME=/home/cloud-user/AppDynamics/Controller/jre8/
+# Uncomment and set to the home directory of a local Java 8+ install
+#JAVA_HOME=/home/cloud-user/AppDynamics/Controller/jre8/
+
+if [ -f ${JAVA_HOME}/bin/java ]
+then
+	JAVA=${JAVA_HOME}/bin/java
+else
+	JAVA="java"
+fi
 
 echo `date`
-$JAVA_HOME/bin/java -jar /home/cloud-user/tmp/AppdReportGen.jar $*
+$JAVA -jar AppdReportGen.jar $*
