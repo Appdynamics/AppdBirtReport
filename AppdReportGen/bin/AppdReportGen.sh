@@ -10,4 +10,4 @@ else
 fi
 
 echo `date`
-$JAVA -jar AppdReportGen.jar $*
+$JAVA -Djava.util.logging.config.file=logging.properties -jar AppdReportGen.jar $*
