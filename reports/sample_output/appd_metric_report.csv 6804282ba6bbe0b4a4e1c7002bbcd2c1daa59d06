@@ -1,0 +1,33 @@
+# AppDynamics Metric Export,,,
+# Application: ECommerce,,,
+# Paths: ,,,
+"#	Business Transaction Performance|Business Transactions|ECommerce-Services|Checkout|Number of Slow Calls",,,
+"#	Business Transaction Performance|Business Transactions|ECommerce-Services|Checkout|Calls per Minute[Sum]",,,
+"#	Business Transaction Performance|Business Transactions|ECommerce-Services|Checkout|Average Response Time (ms)",,,
+# Time range   Start time Mon May 22 18:10:04 EDT 2017 :: 1495491004909   End time Tue May 23 18:10:04 EDT 2017 :: 1495577404909 ,,,
+# Generated: Tue May 23 18:10:08 EDT 2017,,,
+#Time,Slow Calls,Total Calls,Avg. Resp Time,
+5/22/17 18:00,2,225,22876
+5/22/17 19:00,5,268,37685
+5/22/17 20:00,0,287,46374
+5/22/17 21:00,6,282,42504
+5/22/17 22:00,2,267,42102
+5/22/17 23:00,9,263,39197
+5/23/17 0:00,8,260,48186
+5/23/17 1:00,0,235,27427
+5/23/17 2:00,2,266,41100
+5/23/17 3:00,4,267,41300
+5/23/17 4:00,5,269,48690
+5/23/17 5:00,7,283,45102
+5/23/17 6:00,3,273,47903
+5/23/17 7:00,5,267,38505
+5/23/17 8:00,4,264,40913
+5/23/17 9:00,1,265,41918
+5/23/17 10:00,3,265,41215
+5/23/17 11:00,1,274,38732
+5/23/17 12:00,6,279,37017
+5/23/17 13:00,4,269,39206
+5/23/17 14:00,3,254,42316
+5/23/17 15:00,4,272,41436
+5/23/17 16:00,8,273,47004
+5/23/17 17:00,1,280,40769
