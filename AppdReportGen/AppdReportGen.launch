@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/AppdReportGen/src/org/appdynamics/birtreport/AppdReportGen.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<mapAttribute key="org.eclipse.debug.core.environmentVariables">
+<mapEntry key="BIRT_HOME" value="/Users/john.aronson/Documents/workspace/birt-runtime-4.6.0/ReportEngine"/>
+</mapAttribute>
+<booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.appdynamics.birtreport.AppdReportGen"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-p &quot;${file_prompt:parameters}&quot;"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="AppdReportGen"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-DBIRT_HOME=/Users/john.aronson/Documents/workspace/birt-runtime-4.6.0/ReportEngine&#10;-Djava.util.logging.config.file=properties/logging.properties -DcsvRenderOption.protectedChars=,"/>
+</launchConfiguration>

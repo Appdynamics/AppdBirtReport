@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="org.eclipse.birt.report.engine.emitter.csv" default="package">
+
+	<property file="build.properties"/>
+	<property name="build.dir" value="tmp"/>
+	<property name="jar.postfix" value="_1.0.1.20170605"/>
+
+	<!-- Please download BIRT runtime 4.5 or higher separately and point this property to base directory -->
+	<property name="birt.dir" value="/Users/john.aronson/Documents/workspace/birt-runtime-4.6.0"/>
+
+	<path id="compile.classpath">
+		<fileset dir="${birt.dir}/ReportEngine/lib">
+			<include name="**/*.jar"/>
+		</fileset>
+	</path>
+	
+    <target name="build" description="description">
+    	<mkdir dir="${output..}"/>
+		<javac srcdir="${source..}"
+                destdir="${output..}"
+                debug="on"
+                deprecation="on"
+                optimize="off"
+                includes="**"
+        		source="1.8"
+                target="1.8"
+                includeantruntime="false">
+			<classpath refid="compile.classpath"/>
+		</javac>
+    </target>
+
+    <target name="package" depends="build">
+		<jar jarfile="${build.dir}/${ant.project.name}${jar.postfix}.jar"
+			manifest="META-INF/MANIFEST.MF">
+			<fileset dir="${output..}" includes="**"/>
+			<fileset dir=".">
+			    <include name="plugin.xml"/>
+			    <include name=".api_description"/>
+			</fileset>
+		</jar>
+    </target>
+
+	<target name="clean">
+		<delete dir="${output..}"/>
+		<delete dir="${build.dir}"/>
+	</target>
+</project>
