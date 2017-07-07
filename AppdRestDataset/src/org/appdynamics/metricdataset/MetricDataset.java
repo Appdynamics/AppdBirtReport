@@ -61,7 +61,7 @@ public class MetricDataset
 		for(MetricValues values : metricData.values())
 		{
 			if(values == null)
-				break;
+				continue;
 			for(MetricValue mv : values.getMetricValue())
 			{
 				timestampSet.add(mv.getStartTimeInMillis());

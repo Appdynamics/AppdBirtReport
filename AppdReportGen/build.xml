@@ -15,7 +15,7 @@
 	<property name="AppDRESTAPI-SDK.dir" value="/Users/john.aronson/git/AppDRESTAPI-SDK"/>
 
 	<!-- set this to the correct path to the AppdRestDataset jar file -->
-	<property name="AppdRestDataset.jar" value="${basedir}/../AppdRestDataset/deploy/AppdRestDataset_1-0.jar"/>
+	<property name="AppdRestDataset.jar" value="${basedir}/../AppdRestDataset/deploy/AppdRestDataset_1-1.jar"/>
 
 	<path id="compile.classpath">
 		<fileset dir="${lib.dir}/">
