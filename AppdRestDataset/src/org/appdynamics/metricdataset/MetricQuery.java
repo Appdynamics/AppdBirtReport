@@ -163,7 +163,8 @@ public class MetricQuery
 				MetricItems items = access.getBaseMetricListPath(metricApp, metricPath.substring(0, idx));
 				if(items == null)
 				{
-					logger.warning("bad metric path: " +metricPaths[pathIdx]);
+					logger.warning("bad metric path: " +metricPaths[pathIdx] +", app:" +metricApp 
+						+", metric base: " +metricPath.substring(0, idx));
 				}else if(!items.getMetricItems().isEmpty())
 				{	
 			        for (MetricItem item : items.getMetricItems())
