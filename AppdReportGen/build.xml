@@ -89,7 +89,7 @@
 		<delete dir="${build.dir}"/>
 	</target>
 
-	<target name="package" depends="build">
+	<target name="package" depends="clean,build">
 		<delete file="${deploy.dir}/${ant.project.name}_${version}.tar.gz"/>		
 		<tar destfile="${deploy.dir}/${ant.project.name}_${version}.tar.gz" compression="gzip">
 			<fileset dir="${build.dir}/" includes="${ant.project.name}.jar"/>
