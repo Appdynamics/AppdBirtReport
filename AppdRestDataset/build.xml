@@ -47,5 +47,6 @@
 
 	<target name="clean">
 		<delete dir="${build.dir}"/>
+		<delete dir="${deploy.dir}" includes="*.jar"/>
 	</target>
 </project>

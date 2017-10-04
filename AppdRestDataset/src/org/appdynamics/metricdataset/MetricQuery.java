@@ -43,7 +43,7 @@ public class MetricQuery
 		int idx = 0;
 		String controllerHost = (args.length > idx++ ? args[idx-1] : "primarycontrollerc-johnatestbp2-kzdyyozq.srv.ravcloud.com");
 		String controllerPort = (args.length > idx++ ? args[idx-1] : "8090");
-		boolean controllerSsl = (args.length > idx++ ? Boolean.getBoolean(args[idx-1]) : false);
+		boolean controllerSsl = (args.length > idx++ ? Boolean.parseBoolean(args[idx-1]) : false);
 		String userId = (args.length > idx++ ? args[idx-1] : "admin");
 		String userPass = (args.length > idx++ ? args[idx-1] : "Appd-admin");
 		String userAcct = (args.length > idx++ ? args[idx-1] : "customer1");
@@ -60,6 +60,7 @@ public class MetricQuery
 			range = TimeRangeHelper.getTimeRange(currentTimeMillis -1440l*60*1000, currentTimeMillis);
 			idx +=2;
 		}
+		long minTimestampPeriod = (args.length > idx++ ? Long.parseLong(args[idx-1]) : -1l);
 		
 		String metricPaths[] = null;
 		if(args.length > idx)
@@ -78,14 +79,17 @@ public class MetricQuery
 		}
 		
 		MetricQuery exporter = new MetricQuery();
-		System.exit(exporter.run(controllerHost, controllerPort, controllerSsl, userId, userPass, userAcct, app, range, metricPaths));
+		System.exit(exporter.run(controllerHost, controllerPort, controllerSsl, userId, userPass, userAcct, app, range,
+			metricPaths, minTimestampPeriod));
 	}
 	
-	private int run(String controllerHost, String controllerPort, boolean controllerSsl, String userId, String userPass, String userAcct, String app, TimeRange range, String metricPaths[])
+	private int run(String controllerHost, String controllerPort, boolean controllerSsl, String userId, String userPass, 
+			String userAcct, String app, TimeRange range, String metricPaths[], long minTimestampPeriod)
 	{
 		try
 		{	        			
-			MetricDataset dataset = queryData(controllerHost, controllerPort, new Boolean(controllerSsl), userId, userPass, userAcct, metricPaths, app, range);
+			MetricDataset dataset = queryData(controllerHost, controllerPort, new Boolean(controllerSsl), userId, userPass, 
+					userAcct, metricPaths, app, range, new Long(minTimestampPeriod));
 			
 			//output the data
 			File tempFile = File.createTempFile("metricExporter", ".csv", new File("/tmp"));
@@ -114,30 +118,53 @@ public class MetricQuery
 		return 0;
 	}
 
-	public static MetricDataset queryData(String controllerHost, String controllerPort, Boolean controllerSsl, String userId, String userPass, String userAcct, Object inMetricPath, Object app, TimeRange range)
+	public static MetricDataset queryData(String controllerHost, String controllerPort, Boolean controllerSsl, String userId, 
+			String userPass, String userAcct, Object inMetricPath, Object app, TimeRange range)
 	{
 		String metricPaths[] = new String[1];
 		metricPaths[0] = inMetricPath.toString();
 		if(app == null)
 			app = "";
 
-		return queryData(controllerHost, controllerPort, controllerSsl.booleanValue(), userId, userPass, userAcct, metricPaths, app.toString(), range);
+		return queryData(controllerHost, controllerPort, controllerSsl.booleanValue(), userId, userPass, userAcct, 
+				metricPaths, app.toString(), range);
 	}
 
-	public static MetricDataset queryData(String controllerHost, String controllerPort, Boolean controllerSsl, String userId, String userPass, String userAcct, Object[] inMetricPaths, String app, TimeRange range)
+	public static MetricDataset queryData(String controllerHost, String controllerPort, Boolean controllerSsl, String userId, 
+			String userPass, String userAcct, Object[] inMetricPaths, String app, TimeRange range)
 	{
 		String metricPaths[] = new String[inMetricPaths.length];
 		for (int j = 0; j < inMetricPaths.length; j++)
 			metricPaths[j] = inMetricPaths[j].toString();
 
-		return queryData(controllerHost, controllerPort, controllerSsl.booleanValue(), userId, userPass, userAcct, metricPaths, app, range);
+		return queryData(controllerHost, controllerPort, controllerSsl.booleanValue(), userId, userPass, userAcct, 
+				metricPaths, app, range);
 	}
 
-	public static MetricDataset queryData(String controllerHost, String controllerPort, boolean controllerSsl, String userId, String userPass, String userAcct, String[] metricPaths, String app, TimeRange range)
+	public static MetricDataset queryData(String controllerHost, String controllerPort, boolean controllerSsl, String userId, 
+			String userPass, String userAcct, String[] metricPaths, String app, TimeRange range)
+	{
+		return queryData(controllerHost, controllerPort, controllerSsl, userId, userPass, userAcct, metricPaths, app, 
+				range, -1l);
+	}
+
+	public static MetricDataset queryData(String controllerHost, String controllerPort, Boolean controllerSsl, String userId, 
+			String userPass, String userAcct, String[] metricPaths, String app, TimeRange range, Long minTimestampPeriod)
+	{
+		return queryData(controllerHost, controllerPort, controllerSsl.booleanValue(), userId, userPass, userAcct, metricPaths, 
+				app, range, minTimestampPeriod.longValue());
+	}
+
+	public static MetricDataset queryData(String controllerHost, String controllerPort, boolean controllerSsl, String userId, 
+			String userPass, String userAcct, String[] metricPaths, String app, TimeRange range, long minTimestampPeriod)
 	{
 		RESTAccess access = new RESTAccess(controllerHost, controllerPort, controllerSsl, userId, userPass, userAcct);
 
-		MetricDataset dataset = new MetricDataset();
+		MetricDataset dataset = null;
+		if(minTimestampPeriod > -1)
+			dataset = new MetricDataset(range.getStart(), range.getEnd(), minTimestampPeriod);
+		else
+			dataset = new MetricDataset();
 		
 		for (int pathIdx = 0; pathIdx < metricPaths.length; pathIdx++)
 		{

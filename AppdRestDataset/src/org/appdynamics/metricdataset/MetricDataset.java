@@ -36,6 +36,33 @@ public class MetricDataset
 	protected boolean initialized = false;
 	protected Long timestamps[];
 	protected DateFormat dateFormat = null;
+	protected long startTime = -1;
+	protected long endTime = -1;
+	protected long minTimestampPeriod = -1;
+
+	/**
+	 * Default contructor
+	 */
+	public MetricDataset()
+	{
+	}
+
+	
+	/**
+	 * Constructor that ensures the data set covers the entire time range filling with 0 records if necessary
+	 * 
+	 * @param startTime
+	 * @param endTime
+	 * @param minTimestampPeriod
+	 */
+	public MetricDataset(long startTime, long endTime, long minTimestampPeriod)
+	{
+		super();
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.minTimestampPeriod = minTimestampPeriod;
+	}
+
 
 	public void addData(String metricHeader, MetricValues values)
 	{
@@ -83,6 +110,13 @@ public class MetricDataset
 			}
 		}
 		
+		if(minTimestampPeriod > -1)
+		{
+			for(long ts = startTime; ts < endTime; ts += minTimestampPeriod)
+			{
+				timestampSet.add(ts);
+			}
+		}
 		
 		timestamps = timestampSet.toArray(new Long[0]);
 		Arrays.sort(timestamps);
@@ -100,6 +134,12 @@ public class MetricDataset
 		return metricData.get(metricHeader);
 	}
 	
+	public long getMinTimestampPeriod()
+	{
+		return minTimestampPeriod;
+	}
+
+
 	public boolean containsHeader(String metricHeader)
 	{
 		return metricData.containsKey(metricHeader);
@@ -237,9 +277,19 @@ public class MetricDataset
 								case Value:
 									result[headerIdx +1] = metricValue.getValue();
 								}
+							}else
+							{
+								// this column doesn't have a cell value for this row
+								if(minTimestampPeriod > -1)
+								{
+									//fill with a zero
+									result[headerIdx +1] = 0;
+								}
 							}
-						}
-					}
+						}else if(minTimestampPeriod > -1)							
+							result[headerIdx +1] = 0; //fill with zero at the end
+					}else
+						logger.warning("metricData failed to contain expected header: " +header +", metricData: " +metricData);
 				}else if(rowIdx < 0)
 				{
 					String header = metricHeaders.get(headerIdx);
@@ -316,11 +366,28 @@ public class MetricDataset
 								{
 									logger.finer("next(); headerIdx: " +headerIdx +", rowIdx: " +rowIdx 
 										+", metricField: " +metricField +", metricValue: " +metricValue);
-								}
-								
+								}							
 								result[headerIdx +1] = metricValue;
 							}
+						}else if(minTimestampPeriod > -1)
+						{
+							//if filling with zeros create an empty MetricValue here
+							MetricValue mv = new MetricValue();
+							mv.setStartTimeInMillis(timestamps[rowIdx]);
+							mv.setCount(0);
+							mv.setOccurrences(0);
+							mv.setSum(0);
+							result[headerIdx +1] = mv;
 						}
+					}else if(minTimestampPeriod > -1)
+					{
+						//if filling with zeros create an empty MetricValue here
+						MetricValue mv = new MetricValue();
+						mv.setStartTimeInMillis(timestamps[rowIdx]);
+						mv.setCount(0);
+						mv.setOccurrences(0);
+						mv.setSum(0);
+						result[headerIdx +1] = mv;
 					}
 				}else if(rowIdx < 0)
 				{

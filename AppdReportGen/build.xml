@@ -15,7 +15,7 @@
 	<property name="AppDRESTAPI-SDK.dir" value="/Users/john.aronson/git/AppDRESTAPI-SDK"/>
 
 	<!-- set this to the correct path to the AppdRestDataset jar file -->
-	<property name="AppdRestDataset.jar" value="${basedir}/../AppdRestDataset/deploy/AppdRestDataset_1-2.jar"/>
+	<property name="AppdRestDataset.jar" value="${basedir}/../AppdRestDataset/deploy/AppdRestDataset_1-3.jar"/>
 
 	<path id="compile.classpath">
 		<fileset dir="${lib.dir}/">
@@ -87,6 +87,7 @@
 
 	<target name="clean">
 		<delete dir="${build.dir}"/>
+		<delete dir="${deploy.dir}/AppdReportGen"/>
 	</target>
 
 	<target name="package" depends="clean,build">
@@ -98,6 +99,7 @@
 			<fileset dir="properties" includes="*.properties"/>
 			<fileset dir="reports" includes="**"/>
 			<fileset dir="${basedir}/.." includes="LICENSE"/>
+			<fileset dir="" includes="log/readme.txt"/>
 		</tar>
 	</target>
 

@@ -1,0 +1,1 @@
+placeholder for the AppdReportGen log files directory
