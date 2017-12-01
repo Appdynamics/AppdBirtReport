@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
-    <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201603302314</property>
+    <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201606072122</property>
     <property name="units">in</property>
     <method name="initialize"><![CDATA[importPackage(Packages.java.util);
 globalVarMap = new java.util.HashMap();
@@ -362,15 +362,27 @@ globalVarMap = new java.util.HashMap();
             <property name="isRequired">false</property>
             <property name="dataType">dateTime</property>
             <property name="distinct">true</property>
-            <simple-property-list name="defaultValue">
-                <value type="javascript">new Date("2017-04-01")</value>
-            </simple-property-list>
             <list-property name="selectionList"/>
             <property name="paramType">simple</property>
             <property name="controlType">text-box</property>
-            <method name="getDefaultValueList"><![CDATA[new Date()]]></method>
             <structure name="format">
-                <property name="category">Unformatted</property>
+                <property name="category">Custom</property>
+                <property name="pattern">M/d/yy HH:mm</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="EndTime" id="356">
+            <text-property name="helpText">End of the time range to report</text-property>
+            <text-property name="promptText">End of the time range to report</text-property>
+            <property name="valueType">static</property>
+            <property name="isRequired">false</property>
+            <property name="dataType">dateTime</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Custom</property>
+                <property name="pattern">M/d/yy HH:mm</property>
             </structure>
         </scalar-parameter>
         <scalar-parameter name="DaysBack" id="85">
@@ -380,13 +392,9 @@ globalVarMap = new java.util.HashMap();
             <property name="isRequired">false</property>
             <property name="dataType">integer</property>
             <property name="distinct">true</property>
-            <simple-property-list name="defaultValue">
-                <value type="constant">1</value>
-            </simple-property-list>
             <list-property name="selectionList"/>
             <property name="paramType">simple</property>
             <property name="controlType">text-box</property>
-            <method name="getDefaultValueList"><![CDATA[1]]></method>
             <structure name="format">
                 <property name="category">Unformatted</property>
             </structure>
@@ -421,10 +429,22 @@ Logger.getAnonymousLogger().fine("metricPaths: " +Arrays.toString(metricPaths));
 
 var app = params["App"];
 
-var currentTimeMillis  = params["StartTime"].getTime();
 var daysBack = params["DaysBack"];
-	
-var range = TimeRangeHelper.getTimeRange(currentTimeMillis -(daysBack *(1440*60*1000)), currentTimeMillis);
+
+if(params["EndTime"].value == null)
+	endDate = new Date();
+else
+	endDate = params["EndTime"].value;
+		
+var range = null;
+if(daysBack.value != null &amp;&amp; daysBack > 0)
+{
+ 	range = TimeRangeHelper.getTimeRange(endDate.getTime() -(daysBack *(1440*60*1000)), endDate.getTime());
+ 	if(params["StartTime"].value != null)
+		Logger.getAnonymousLogger().info("Both StartTime and DaysBack params were given, using the DaysBack value: " +daysBack); 		
+}else if(params["StartTime"].value != null)
+ 	range = TimeRangeHelper.getTimeRange(params["StartTime"].getTime(), endDate.getTime());
+
 Logger.getAnonymousLogger().fine("range: " +range);
 globalVarMap.put("range", range);
 
